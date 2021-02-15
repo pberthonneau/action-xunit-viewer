@@ -2,7 +2,7 @@ name: Release
 on: push
 jobs:
   test-defaults:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     name: Default version uses timestamps and package can be installed
     steps:
       - uses: actions/checkout@v1
@@ -64,7 +64,7 @@ jobs:
           name: alternate-report-path-reports
           path: somewhere/custom-report.html
   test-show-failure:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     continue-on-error: true
     name: Demonstrates failure case
     steps:
@@ -96,14 +96,14 @@ jobs:
           name: ${{ steps.xunit-viewer.outputs.report-name }}
           path: ${{ steps.xunit-viewer.outputs.report-dir }}
   test-detection:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     name: Run tests to ensure detection is working
     steps:
       - uses: actions/checkout@v1
       - name: Run tests
         run: test/all.sh   
   release:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     name: Release if all tests pass on master branch
     needs:
       - test-defaults
